@@ -1,0 +1,29 @@
+import React from "react";
+import PropTypes from 'prop-types'
+import {Text, View, StyleSheet} from 'react-native';
+import {connect} from "react-redux"
+const innerStyle = StyleSheet.create({
+  container:{ flex: 1}
+})
+class <%- containerName %> extends React.Component {
+  static propTypes = {}
+  static defaultProps = {}
+
+  constructor(props) {
+    super(props)
+  }
+
+  render() {
+    return (
+      <View style={innerStyle.container}>
+        <Text>${NAME}</Text>
+      </View>
+    );
+  }
+}
+
+const mapStateToProps = (state) => ({
+})
+const mapDispatchToProps = (dispatch) => ({
+})
+export default connect(mapStateToProps, mapDispatchToProps)(<%- containerName %>)
