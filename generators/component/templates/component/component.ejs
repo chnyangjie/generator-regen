@@ -1,0 +1,26 @@
+import React from "react"
+import PropTypes from 'prop-types'
+import {Text, View, StyleSheet} from 'react-native'
+const innerStyle = StyleSheet.create({
+  container:{
+    flex: 1
+  }
+})
+class <%- componentName %> extends React.Component {
+  static propTypes = {}
+  static defaultProps = {}
+
+  constructor(props) {
+    super(props)
+  }
+
+  render() {
+    return (
+      <View style={innerStyle.container}>
+        <Text>${NAME}</Text>
+      </View>
+    );
+  }
+}
+
+export default '<%- componentName %>'
