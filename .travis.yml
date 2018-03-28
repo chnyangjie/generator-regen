@@ -28,5 +28,5 @@ stages:
   - name: test
     if: branch != master
     script:
-    - yarn run test
+      - yarn run test
 
