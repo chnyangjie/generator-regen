@@ -2,7 +2,7 @@ pipeline {
   agent any
   stages {
     stage('test') {
-      script {
+      steps {
         echo 'test'
       }
     }
@@ -10,7 +10,7 @@ pipeline {
       when {
         branch 'develop'
       }
-      script {
+      steps {
         echo 'deploy'
       }
     }
@@ -18,7 +18,7 @@ pipeline {
       when {
         branch 'master'
       }
-      script {
+      steps {
         echo 'release'
       }
     }
