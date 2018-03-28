@@ -22,3 +22,4 @@ deploy:
     tags: true
     branch: master
     repo: chnyangjie/generator-regen
+    skip_cleanup: true
