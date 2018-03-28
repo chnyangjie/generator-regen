@@ -13,6 +13,8 @@ install:
   - yarn install
 script:
   - yarn run test
+before_deploy:
+  - yarn install
 deploy:
   provider: npm
   email: chnyangjie@163.com
