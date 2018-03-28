@@ -2,16 +2,32 @@ os:
   - linux
 language: node_js
 node_js:
-  - v9
-  - v8
+  - "9"
+  - "8"
 cache:
   yarn: true
   directories:
-    - $HOME/.yarn-cache
+    - "$HOME/.yarn-cache"
     - node_modules
 before_install:
   - yarn global add yo
 install:
   - yarn install
-script:
-  - yarn run test
+stages:
+  - name: deploy
+    if: branch = master
+    script:
+      - yarn run test
+    deploy:
+    provider: npm
+    email: chnyangjie@163.com
+    api_key:
+      secure: Mpl+fWQYYVIOaMfg4pUaEuMnRgdB7ZkbDjA3SEfWOxNV0yFhmICL30BLfbnZIwyCrD9d+FE6+WQwCsMb0B1Z/BcvBKZXCAX9VKvLNlt0aHmGCIvD47OB+ob727HiQPKFr0mXVi/YUL2Glb+7IeI1VizNjilTBCZzY0sGonEO6m3ZJ8wOJ1pmDr8I4v4lCya+Ultp21X2MEEayyuo+YensSsrYZUb2taeiY3rLULck7RFbRsQkumNcGTURSZkoL2M2D8/R9Tq5/x+WL1gBlQi5i3IBsK1UDCeh7TGjNhJPIo39siOR79iN+C2+4BYco+lWMdcqEFrul9voKjv3MnwBeRXmEl2ONFUx71hY4vZQeCiAcjW5yjQNyHo+kFWKUdVc+PZ7BnnFwPejbxjWjgzxgFaHYkYJMnNonT7+GpFWmpdAmTFGDiA9Xensc+dqiZJ34eQHw7IVkoqKfCWGK95SjmSCs4CGsrnSiwrIZN1kjlV7MTSWVxWFkTDfS9FI2ZmBnm9Yy35VY4l18V6pLyZ/CdTU8doWN7JaXjiA7+FYAyT+MgpZX5Kdm2jyqUs9kyPcI+TLbrOeQCoeHxY65GuqXA93fk5wU9aL/74+2fQ9n+e9CvCYBF40flXO3BT6VzKui9NdThsNv796d7kPzARx1UGyB1e1TrS+2Rbo+8Jc4w=
+    on:
+      tags: true
+      repo: chnyangjie/generator-regen
+  - name: test
+    if: branch != master
+    script:
+    - yarn run test
+
